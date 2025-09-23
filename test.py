@@ -9,11 +9,20 @@ validated_hwids = {
     "40072e03db9e001159ba6f7fecdc48a469b0754af9d081cf8052073cca94a6a304e1eaebbae0d494cb40e3836dbe94f302add8da76f425d33af8ea7f45d1a91c": "Hwid Client"
 }
 
+def get_client_ip():
+    if request.headers.get("X-Forwarded-For"):
+        ip = request.headers.get("X-Forwarded-For").split(',')[0].strip()
+    else:
+        ip = request.remote_addr or "Unknown"
+    return ip
+
 @app.route('/validate', methods=['POST', 'GET', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'])
 def validate():
-    if request.method != 'POST':
+    ip = get_client_ip()
+    method = request.method
+    print(f"[Info] Received {method} from {ip}")
+    if method != 'POST':
         return jsonify({"message": "your funny"}), 200
-    
     data = request.get_json()
     hwid = data.get('hwid') if data else None
     if hwid in validated_hwids:
