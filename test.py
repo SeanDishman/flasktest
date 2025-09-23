@@ -14,7 +14,7 @@ def validate():
     username = data.get('username')
     hwid = data.get('hwid')
     if hwid in validated_hwids and validated_hwids[hwid] == username:
-        return jsonify({"status": "success"}), 200
+        return jsonify({"status": "authenticated"}), 200
     return jsonify({"status": "unauthorized"}), 401
 
 if __name__ == '__main__':
