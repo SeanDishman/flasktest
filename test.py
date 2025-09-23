@@ -5,7 +5,7 @@ app = Flask(__name__)
 validated_hwids = {
     "483939": "steve",
     "192837": "alex",
-    "123456": "john"
+    "123456": "john",
     "40072e03db9e001159ba6f7fecdc48a469b0754af9d081cf8052073cca94a6a304e1eaebbae0d494cb40e3836dbe94f302add8da76f425d33af8ea7f45d1a91c": "Hwid Client"
 }
 
