@@ -22,7 +22,7 @@ def validate():
     method = request.method
     print(f"[Info] Received {method} from {ip}")
     if method != 'POST':
-        return jsonify({"message": "your funny"}), 200
+        return "Im sorry we only take POST here :(", 200
     data = request.get_json()
     hwid = data.get('hwid') if data else None
     if hwid in validated_hwids:
