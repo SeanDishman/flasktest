@@ -9,10 +9,13 @@ validated_hwids = {
     "40072e03db9e001159ba6f7fecdc48a469b0754af9d081cf8052073cca94a6a304e1eaebbae0d494cb40e3836dbe94f302add8da76f425d33af8ea7f45d1a91c": "Hwid Client"
 }
 
-@app.route('/validate', methods=['POST'])
+@app.route('/validate', methods=['POST', 'GET', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'])
 def validate():
+    if request.method != 'POST':
+        return jsonify({"message": "your funny"}), 200
+    
     data = request.get_json()
-    hwid = data.get('hwid')
+    hwid = data.get('hwid') if data else None
     if hwid in validated_hwids:
         return jsonify({
             "status": "authenticated",
