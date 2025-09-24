@@ -23,7 +23,7 @@ def is_rate_limited(ip):
     now = time.time()
     if ip not in rate_limits:
         rate_limits[ip] = []
-    rate_limits[ip] = [t for t in rate_limits[ip] if now - t < 10]
+    rate_limits[ip] = [t for t in rate_limits[ip] if now - t < 30]
     if len(rate_limits[ip]) >= 2:
         return True
     rate_limits[ip].append(now)
