@@ -35,7 +35,7 @@ def validate():
     method = request.method
     print(f"[Info] Received {method} from {ip}")
     if is_rate_limited(ip):
-        return "rate limited", 429
+        return jsonify({"status": "rate limited"}), 429
     if method != 'POST':
         return "Im sorry we only take POST here :(", 200
     data = request.get_json()
