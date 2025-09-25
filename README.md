@@ -1,1 +1,1 @@
-Flask HWID authentication server, for people who are making programs and need a simple minimal HWID auth that is web api based.
+Flask HWID authentication server, for people who are making programs and need a simple minimal HWID auth that is web api based. If you are going for a secure HWID for a large scale and widley used program i suggest you add a time stamp checker aswell as a session responce token.
